@@ -16,17 +16,23 @@ The connection is implementes with a network bridge between host and container.
 
 `[root@host machines]# rpm --rebuilddb --root=/var/lib/machines/centos7template/ `
 
-`[root@host machines]# wget http://mirror.centos.org/centos-7/7.5.1804/os/x86_64/Packages/centos-release-7-5.1804.el7.centos.x86_64.rpm `
+`[root@server1 machines]# wget http://mirror.centos.org/centos-7/7/os/x86_64/RPM-GPG-KEY-CentOS-7 `
+
+`[root@server1 machines]# wget http://mirror.centos.org/centos-7/7/os/x86_64/Packages/centos-release-7-5.1804.el7.centos.x86_64.rpm `
 
 `[root@host machines]# mv centos-release-7-5.1804.el7.centos.x86_64.rpm /tmp/ `
 
 ### Install the release rpm for Centos (without deps) and create a basic Centos 7 bootstrap
 
+`[root@host machines]# rpm --import RPM-GPG-KEY-CentOS-7 `
+
 `[root@host machines]# rpm -i --root=/var/lib/machines/centos7template/ --nodeps /tmp/centos-release-7-5.1804.el7.centos.x86_64.rpm ` 
 
-`[root@host machines]# yum --releasever=7 --nogpg --installroot=/var/lib/machines/centos7template/ groups install -y -q 'Minimal Install' `
+`[root@host machines]# yum --releasever=7 --installroot=/var/lib/machines/centos7template/ install systemd passwd yum fedora-release vim-minimal `
 
-`[root@host machines]# yum --releasever=7 --nogpg --installroot=/var/lib/machines/centos7template/ install -y wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct `
+`[root@server1 machines]# yum -y --releasever=7  --installroot=/var/lib/machines/centos7template/ groups install -y -q 'Minimal Install'`
+
+`[root@host machines]# yum --releasever=7 --installroot=/var/lib/machines/centos7template/ install -y wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct `
 
 ### Set password in your container.
 
@@ -63,14 +69,14 @@ The connection is implementes with a network bridge between host and container.
 
 `[root@centos_chroot ~]# ip route add default via 10.0.0.254 `
 
-`[root@centos_chroot ~]# cat <<EOF /etc/resolv.conf \
-			 namserver 172.16.47.11 \
+`[root@centos_chroot ~]# cat <<EOF /etc/resolv.conf 
+			 namserver 172.16.47.11 
  			 EOF `
 `[root@centos_chroot ~]# halt `
 
 ### Add ip rule for filter network-package from host to container and viceversa
 
-
+... to be continued
 
 
  
