@@ -92,18 +92,18 @@ EOF `
 
 ```
 [root@centos_chroot ~]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-host0
-TYPE="Ethernet";	\
-BOOTPROTO="none"; 	\
-DEFROUTE="yes"; 	\
+TYPE="Ethernet";\
+BOOTPROTO="none";\
+DEFROUTE="yes";\
 IPV4_FAILURE_FATAL="no";\
-DEVICE="host0"; 	\
-ONBOOT="yes"; 		\
-PEERDNS="yes"; 		\
-PEERROUTES="yes"; 	\
-ARPCHECK="no"; 		\
-IPADDR=10.0.0.11; 	\
-NETMASK=255.255.255.0; 	\
-GATEWAY=10.0.0.254; 	\
+DEVICE="host0";\
+ONBOOT="yes";\
+PEERDNS="yes";\
+PEERROUTES="yes";\
+ARPCHECK="no";\
+IPADDR=10.0.0.11;\
+NETMASK=255.255.255.0;\
+GATEWAY=10.0.0.254;\
 NM_CONTROLLED="no"
 EOF
 ```
@@ -117,13 +117,13 @@ EOF
 
 ```
 [root@host machines]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-br0
-DEVICE=br0;		\
-BOOTPROTO=static;	\
-IPADDR=10.0.0.254;	\
-NETMASK=255.255.255.0;	\
-GATEWAY=172.16.32.1;	\
-ONBOOT=yes;		\
-TYPE=Bridge;		\
+DEVICE=br0;\
+BOOTPROTO=static;\
+IPADDR=10.0.0.254;\
+NETMASK=255.255.255.0;\
+GATEWAY=172.16.32.1;\
+ONBOOT=yes;\
+TYPE=Bridge;\
 NM_CONTROLLED=no
 EOF
 
