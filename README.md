@@ -82,9 +82,11 @@ The connection is implementes with a network bridge between host and container.
 
 ### Add DNS (change the DNSnameserver ip)
 
-`[root@centos_chroot ~]# cat <<EOF > /etc/resolv.conf 
+```
+[root@centos_chroot ~]# cat <<EOF > /etc/resolv.conf 
 nameserver 172.16.47.11 
-EOF `
+EOF
+```
 
 ### Add ifconfig network-script to host0 interface
 
