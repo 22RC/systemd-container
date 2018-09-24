@@ -90,7 +90,8 @@ EOF `
 
 `[root@centos_chroot ~]# touch /etc/sysconfig/network-scripts/ifcfg-host0 `
 
-```[root@centos_chroot ~]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-host0
+```
+[root@centos_chroot ~]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-host0
 TYPE="Ethernet"
 BOOTPROTO="none"
 DEFROUTE="yes"
@@ -113,6 +114,7 @@ EOF
 
 `[root@host machines]# touch /etc/sysconfig/network-scripts/ifcfg-br0 `
 
+```
 [root@host machines]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-br0
 DEVICE=br0
 BOOTPROTO=static
@@ -122,7 +124,9 @@ GATEWAY=172.16.32.1
 ONBOOT=yes
 TYPE=Bridge
 NM_CONTROLLED=no
-EOF`
+EOF
+
+```
 
 `[root@host machines]# systemctl restart network `
 
