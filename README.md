@@ -117,15 +117,15 @@ EOF
 
 ```
 [root@host machines]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-br0
->DEVICE=br0
->BOOTPROTO=static 
->IPADDR=10.0.0.254 
->NETMASK=255.255.255.0 
->GATEWAY=172.16.32.1 
->ONBOOT=yes 
->TYPE=Bridge 
->NM_CONTROLLED=no
->EOF
+DEVICE=br0
+BOOTPROTO=static 
+IPADDR=10.0.0.254 
+NETMASK=255.255.255.0 
+GATEWAY=172.16.32.1 
+ONBOOT=yes 
+TYPE=Bridge 
+NM_CONTROLLED=no
+EOF
 
 ```
 
