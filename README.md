@@ -90,20 +90,34 @@ EOF `
 
 `[root@centos_chroot ~]# touch /etc/sysconfig/network-scripts/ifcfg-host0 `
 
-`[root@centos_chroot ~]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-host0 
+`[root@centos_chroot ~]# cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-host0
+
 TYPE="Ethernet"
+
 BOOTPROTO="none"
+
 DEFROUTE="yes"
+
 IPV4_FAILURE_FATAL="no"
+
 DEVICE="host0"
+
 ONBOOT="yes"
+
 PEERDNS="yes"
+
 PEERROUTES="yes"
+
 ARPCHECK="no"
+
 IPADDR=10.0.0.11
+
 NETMASK=255.255.255.0
+
 GATEWAY=10.0.0.254
+
 NM_CONTROLLED="no"
+
 EOF `
 
 `[root@centos-chroot ~]# systemctl restart network `
