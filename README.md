@@ -2,7 +2,7 @@
 
 This repo contains steps to create a Centos 7 systemd-container with internal networking.
 
-The connection is implementes with a network bridge between host and container. 
+The connection is implemented with a network bridge between host and container. 
 
 ## Centos 7 and systemd-nspawn
 
