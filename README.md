@@ -1,4 +1,4 @@
-# Systemd-container
+# Systemd-Nspawn container
 
 This repo contains steps to create a Centos 7 systemd-container with internal networking.
 
