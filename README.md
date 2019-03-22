@@ -20,7 +20,7 @@ The connection is implemented with a network bridge between host and container.
 
 `[root@host machines]# wget http://mirror.centos.org/centos-7/7/os/x86_64/Packages/centos-release-7-6.1810.2.el7.centos.x86_64.rpm `
 
-`[root@host machines]# mv centos-release-7-5.1804.el7.centos.x86_64.rpm /tmp/ `
+`[root@host machines]# mv centos-release-7-* /tmp/ `
 
 ### Install the release rpm for Centos (without deps) and create a basic Centos 7 bootstrap
 
