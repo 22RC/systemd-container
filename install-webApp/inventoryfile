@@ -1,0 +1,5 @@
+[jenkins-host]
+jenkins.nspawn ansible_host=10.0.0.11
+
+[iptables-manager]
+iptables-manager.local ansible_host=localhost

@@ -24,13 +24,11 @@ The connection is implemented with a network bridge between host and container.
 
 ### Install the release rpm for Centos (without deps) and create a basic Centos 7 bootstrap
 
-`[root@host machines]# rpm --import RPM-GPG-KEY-CentOS-7 `
+`[root@host machines]# rpm --import RPM-GPG-KEY-CentOS-7 --root=/var/lib/machines/centos7template/`
 
-`[root@host machines]# rpm -i --root=/var/lib/machines/centos7template/ --nodeps /tmp/centos-release-7-5.1804.el7.centos.x86_64.rpm ` 
+`[root@host machines]# rpm -i --root=/var/lib/machines/centos7template/ --nodeps /tmp/centos-release-7-6.1810.2.el7.centos.x86_64.rpm ` 
 
 `[root@host machines]# yum -y --releasever=7  --installroot=/var/lib/machines/centos7template/ groupinstall -y -q 'Minimal Install'`
-
-`[root@host machines]# yum --releasever=7 --installroot=/var/lib/machines/centos7template/ install centos-release  `
 
 `[root@host machines]# yum --releasever=7 --installroot=/var/lib/machines/centos7template/ install -y wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct `
 
@@ -137,7 +135,7 @@ EOF
 
 `[root@host machines]# iptables -A FORWARD -i br0 -o eth0 -j ACCEPT `
 
-`[root@host machines]# iptables -A FORWARD -i eth0 -o br0 -m state --state ESTABLISHED,RELATED -j ACCEPT `
+`[root@host machines]# iptables -A FORWARD -i eth0 -o br0 -j ACCEPT `
 
 `[root@host machines]# iptables -t nat -A POSTROUTING -o eth0  -j MASQUERADE `
 
@@ -191,6 +189,8 @@ Delegate=yes
 WantedBy=machines.target
 
 ```
+
+`[root@host ~]# systemctl daemon-reload`
 
 `[root@host ~]# systemctl start systemd-nspawn@centos7template.service `
 

@@ -1,0 +1,24 @@
+- hosts: jenkins-host  
+  tasks:
+  - name: Install java openjdk
+    yum:
+      name: java
+      state: latest
+  - name: Import RPM key for jenkins packages
+    shell: rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    ignore_errors: True
+  - name: Download RPM packages for Jenkins
+    shell: wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  - name: Install Jenkins with yum
+    yum:
+      name: jenkins
+      state: latest
+  - name: Start systemd Jenkins.servece
+    service:
+      name: jenkins
+      state: started
+
+- hosts: iptables-manager
+  tasks: 
+  - name: configuring iptable for forward packeges from container to host and viceversa
+    shell: iptables -t nat -A PREROUTING -i enp4s0 -p tcp --dport 8080 -j DNAT --to-destination 10.0.0.11:8080
